@@ -1,0 +1,4 @@
+enlever les printf
+normer
+configuer les .h et la lib pour macos + le makefile
+tester en speed les leaks
