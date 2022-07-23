@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_win_data.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:12:15 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:12:37 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
 
 int	ft_init_win_data(t_win_data *win_data, int size_x, int size_y)
@@ -8,11 +20,11 @@ int	ft_init_win_data(t_win_data *win_data, int size_x, int size_y)
 	win_data->win = mlx_new_window(win_data->mlx, size_x, size_y, "so_long");
 	win_data->winbuffer.img = mlx_new_image(win_data->mlx, size_x, size_y);
 	win_data->winbuffer.addr = mlx_get_data_addr(
-		win_data->winbuffer.img,
-		&(win_data->winbuffer.bits_per_pixel),
-		&(win_data->winbuffer.line_length),
-		&(win_data->winbuffer.endian)
-	);
+			win_data->winbuffer.img,
+			&(win_data->winbuffer.bits_per_pixel),
+			&(win_data->winbuffer.line_length),
+			&(win_data->winbuffer.endian)
+			);
 	win_data->winbuffer.height = size_y;
 	win_data->winbuffer.width = size_x;
 	return (0);

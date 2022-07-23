@@ -1,25 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_draw_board.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:16:01 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:28:04 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
+
+typedef struct s_idx {
+	size_t	x;
+	size_t	y;
+}	t_idx;
 
 void	ft_draw_board(t_instance *instance)
 {
-	size_t		x_idx;
-	size_t		y_idx;
+	t_idx		i;
+	t_img_data	*wbf;
 
-	y_idx = 0;
-	while (y_idx < instance->map_data.height)
+	wbf = &(instance->win_data.winbuffer);
+	i.y = 0;
+	while (i.y < instance->map_data.height)
 	{
-		x_idx = 0;
-		while (x_idx < instance->map_data.width)
+		i.x = 0;
+		while (i.x < instance->map_data.width)
 		{
-			put_img_to_buffer(&(instance->assets.empty), &(instance->win_data.winbuffer), x_idx * TILE_WIDTH, y_idx * TILE_HEIGHT);
-			if (instance->map_data.map[y_idx][x_idx] == WALL)
-				put_img_to_buffer(&(instance->assets.wall), &(instance->win_data.winbuffer), x_idx * TILE_WIDTH, y_idx * TILE_HEIGHT);
-			if (instance->map_data.map[y_idx][x_idx] == COLLECTIBLE)
-				put_img_to_buffer(&(instance->assets.collectible), &(instance->win_data.winbuffer), x_idx * TILE_WIDTH, y_idx * TILE_HEIGHT);
-			if (instance->map_data.map[y_idx][x_idx] == EXIT)
-				put_img_to_buffer(&(instance->assets.exit), &(instance->win_data.winbuffer), x_idx * TILE_WIDTH, y_idx * TILE_HEIGHT);
-			x_idx++;
+			put_img_to_buffer(&(instance->assets.empty), wbf,
+				i.x * TILE_WIDTH, i.y * TILE_HEIGHT);
+			if (instance->map_data.map[i.y][i.x] == WALL)
+				put_img_to_buffer(&(instance->assets.wall),
+					wbf, i.x * TILE_WIDTH, i.y * TILE_HEIGHT);
+			if (instance->map_data.map[i.y][i.x] == COLLECTIBLE)
+				put_img_to_buffer(&(instance->assets.collectible), wbf,
+					i.x * TILE_WIDTH, i.y * TILE_HEIGHT);
+			if (instance->map_data.map[i.y][i.x] == EXIT)
+				put_img_to_buffer(&(instance->assets.exit), wbf,
+					i.x * TILE_WIDTH, i.y * TILE_HEIGHT);
+			i.x++;
 		}
-		y_idx++;
+		i.y++;
 	}
 }

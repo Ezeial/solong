@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hook_loop.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:29:05 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:29:16 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
 
 static int	render_next_frame(t_instance *instance)
@@ -10,11 +22,11 @@ static int	render_next_frame(t_instance *instance)
 		instance->win_data.winbuffer.img,
 		0,
 		0
-	);
+		);
 	return (0);
 }
 
-void		ft_hook_loop(t_instance *instance)
+void	ft_hook_loop(t_instance *instance)
 {
 	mlx_loop_hook(instance->win_data.mlx, render_next_frame, instance);
 }

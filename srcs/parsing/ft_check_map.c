@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:30:37 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:52:03 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
 
 static int	ft_is_map_rectangle(t_list *lines)
@@ -57,12 +69,7 @@ static int	ft_check_map_tile(t_list *lines)
 		idx = 0;
 		while (line[idx])
 		{
-			if (line[idx] == 'E')
-				tiles |= 0x1;
-			if (line[idx] == 'P')
-				tiles |= 0x2;
-			if (line[idx] == 'C')
-				tiles |= 0x4;
+			ft_set_flag(&tiles, line[idx]);
 			idx++;
 		}
 		current_el = current_el->next;
@@ -73,11 +80,10 @@ static int	ft_check_map_tile(t_list *lines)
 		return (-1);
 }
 
-static int ft_check_map_border(t_list *lines)
+static int	ft_check_map_border(t_list *lines)
 {
 	size_t		width;
 	size_t		idx;
-	t_list_elem	*current_el;
 
 	idx = 0;
 	width = ft_strlen(lines->top->data);
@@ -94,14 +100,8 @@ static int ft_check_map_border(t_list *lines)
 			return (-1);
 		idx++;
 	}
-	current_el = lines->top;
-	while (current_el)
-	{
-		if (((char *)(current_el->data))[0] != '1' ||
-				((char *)(current_el->data))[width - 1] != '1')
-			return (-1);
-		current_el = current_el->next;
-	}
+	if (ft_check_side_border(lines->top, width) < 0)
+		return (-1);
 	return (0);
 }
 

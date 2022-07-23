@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_player.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:12:00 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:12:09 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
 
-void ft_init_player(t_player *player, t_map_data *map_data)
+void	ft_init_player(t_player *player, t_map_data *map_data)
 {
 	size_t	x_idx;
 	size_t	y_idx;

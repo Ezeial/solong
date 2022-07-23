@@ -4,7 +4,7 @@
 
 SRCS_FLAT		=	main.c \
 					minilibx-api/get_pixel_on_img.c minilibx-api/put_img_to_buffer.c minilibx-api/put_pixel_to_img.c \
-					parsing/ft_check_format.c parsing/ft_parse.c parsing/ft_read_map.c parsing/ft_check_map.c parsing/ft_init_map_data.c \
+					parsing/ft_check_format.c parsing/ft_parse.c parsing/ft_read_map.c parsing/ft_check_map.c parsing/ft_init_map_data.c parsing/ft_utils.c \
 					initialization/ft_init.c initialization/ft_init_win_data.c initialization/ft_load_assets.c initialization/ft_init_player.c \
 					loop/ft_draw_board.c loop/ft_draw_player.c loop/ft_hook_loop.c \
 					event/ft_hook_events.c event/ft_on_key_escape.c event/ft_on_player_movement.c \
@@ -35,13 +35,15 @@ OBJS			=	$(SRCS:.c=.o)
 all:			$(NAME)
 
 %.o:			%.c $(INCLUDES)
-				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -I$(DIR_INCLUDES) -Ilibft/includes -O3 -c $< -o $@
+				$(CC) $(CFLAGS) -Imlx -I$(DIR_INCLUDES) -Ilibft/includes -c $< -o $@
 
 $(NAME):		$(OBJS)
+				make -C mlx
 				make -C libft
-				$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+				$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
+				make clean -C mlx
 				make clean -C libft
 				$(RM) $(OBJS)
 

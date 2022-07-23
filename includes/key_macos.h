@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_macos.h                                         :+:      :+:    :+:   */
+/*   key_macos.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 04:24:11 by tglory            #+#    #+#             */
-/*   Updated: 2021/11/09 11:10:32 by tglory           ###   ########lyon.fr   */
+/*   Created: 2022/07/23 14:06:03 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:06:04 by egiraldi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEY_MACOS_H
 # define KEY_MACOS_H
-
-# include "../minilibx-mac/mlx.h"
 
 /*
 ** Keyboard LETTERS

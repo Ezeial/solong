@@ -1,5 +1,16 @@
-#include "solong.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:45:36 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:54:22 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "solong.h"
 
 int	ft_parse(int ac, char **av, t_map_data *map_data)
 {
@@ -20,4 +31,3 @@ int	ft_parse(int ac, char **av, t_map_data *map_data)
 	ft_lstclear(lines, free);
 	return (0);
 }
-

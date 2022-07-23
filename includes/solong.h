@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solong.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 14:06:13 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/07/23 14:44:38 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SOLONG_H
 # define SOLONG_H
 
-# include "key_linux.h"
+# include "key_macos.h"
 # include "libft.h"
 # include <mlx.h>
 # include <stdio.h>
@@ -12,7 +24,7 @@
 # define TILE_WIDTH 32
 # define TILE_HEIGHT 32
 
-typedef struct	s_img_data {
+typedef struct s_img_data {
 	void		*img;
 	char		*addr;
 	int			width;
@@ -28,13 +40,13 @@ typedef struct s_map_data {
 	char		**map;
 }				t_map_data;
 
-typedef struct	s_win_data {
+typedef struct s_win_data {
 	void		*mlx;
 	void		*win;
 	t_img_data	winbuffer;
 }				t_win_data;
 
-typedef struct	s_assets {
+typedef struct s_assets {
 	t_img_data	player;
 	t_img_data	empty;
 	t_img_data	exit;
@@ -42,7 +54,7 @@ typedef struct	s_assets {
 	t_img_data	wall;
 }				t_assets;
 
-typedef struct	s_player {
+typedef struct s_player {
 	size_t		x;
 	size_t		y;
 	size_t		mov;
@@ -56,20 +68,22 @@ typedef struct s_instance
 	t_player	player;
 }				t_instance;
 
-typedef enum {
+typedef enum e_map_char {
 	EMPTY = '0',
 	WALL = '1',
 	EXIT = 'E',
 	PLAYER = 'P',
 	COLLECTIBLE = 'C'
-}				e_map_char;
+}				t_map_char;
 
-typedef unsigned char t_byte;
+typedef unsigned char	t_byte;
 
 int		*get_pixel_on_img(t_img_data *img_data, int x, int y);
 void	put_img_to_buffer(t_img_data *img, t_img_data *buffer, int x, int y);
 void	put_pixel_to_img(t_img_data *img, int x, int y, int color);
 
+void	ft_set_flag(t_byte *tiles, char c);
+int		ft_check_side_border(t_list_elem *top, size_t width);
 int		ft_check_format(char *path);
 int		ft_read_map(char *path, t_list **lines);
 int		ft_check_map(t_list *lines);
@@ -82,16 +96,16 @@ void	ft_destroy_assets(t_instance *instance);
 
 int		ft_init_win_data(t_win_data *win_data, int size_x, int size_y);
 void	ft_load_assets(t_instance *instance);
-void 	ft_init_player(t_player *player, t_map_data *map_data);
-int		ft_init();
+void	ft_init_player(t_player *player, t_map_data *map_data);
+int		ft_init(t_instance *instance);
 
 void	ft_draw_player(t_instance *instance);
 void	ft_draw_board(t_instance *instance);
 void	ft_hook_loop(t_instance *instance);
 
 int		ft_exit_program(t_instance *instance);
-void 	ft_on_key_escape(int keycode, t_instance *instance);
-void 	ft_on_player_movement(int keycode, t_instance *instance);
+void	ft_on_key_escape(int keycode, t_instance *instance);
+void	ft_on_player_movement(int keycode, t_instance *instance);
 void	ft_hook_events(t_instance *instance);
 
 #endif
