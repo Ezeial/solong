@@ -24,7 +24,7 @@ DIR_INCLUDES	=	includes
 HEADERS			=	solong.h
 INCLUDES 		=	$(addprefix $(DIR_INCLUDES)/, $(HEADERS))
 
-NAME			=	solong
+NAME			=	so_long
 
 OBJS			=	$(SRCS:.c=.o)	
 
